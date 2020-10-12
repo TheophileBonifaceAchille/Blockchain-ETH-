@@ -57,4 +57,21 @@ Dans le cas de la blockchain exploitant exploitant un consensus PoS, les mineurs
 
 ### Le Mining (minage en français)
 
-Les noeuds miner créent des blocs dans la châine. Un bloc est une structure de données qui contient un ensemble de transactions. Lors de la création d'un bloc, le mineur sélectionnera certaines transactions dans son pool de transactions en attent (en attente d'être incluses dans la chaîne) et commencera à extraire le bloc. La chose importante à savoir est que l'exploitation minière est un processus coûteux. Par conséquent, si les mineurs n'obtenaient rien en échange de l'exploitation minière, personne ne le ferait. Dans Ethereum, lorsqu'un mineur extrait un nouveau bloc, il reçoit les frais de toutes les transections incluses dans ce bloc et une récompense de bloc (en fait 2 ETH). Par conséquent, plus le prix du gaz est élevé dans les transactions, plus les frais perçus par le mineur seront élevés.
+Les noeuds miner créent des blocs dans la chaîne. Un bloc est une structure de données qui contient un ensemble de transactions. Lors de la création d'un bloc, le mineur sélectionnera certaines transactions dans son pool de transactions en attent (en attente d'être incluses dans la chaîne) et commencera à extraire le bloc. La chose importante à savoir est que l'exploitation minière est un processus coûteux. Par conséquent, si les mineurs n'obtenaient rien en échange de l'exploitation minière, personne ne le ferait. Dans Ethereum, lorsqu'un mineur extrait un nouveau bloc, il reçoit les frais de toutes les transections incluses dans ce bloc et une récompense de bloc (en fait 2 ETH). Par conséquent, plus le prix du gaz est élevé dans les transactions, plus les frais perçus par le mineur seront élevés.
+
+### Fees/Gas (frais)
+
+Les frais sur la blockchain Bitcoin, ou le système de gaz sur la blockchain Ethereum, sont des système de protection et une récompense pour les noeuds traitant la transaction. L'informatique coûte de l'argent: héberger un service stockant des informations de traitement de données. Chaque transaction que modifie un état dans une blockchain, comme l'envoi de crypto-monnaies, le déploiement d'un contrat intélligent ou la modification d'une valeur dans un contrat intelligent, coûtera des frais à l'expéditeur. Un autre aspect de la facturation de l'utilisateur pour ses actions sur le réseau est de prévenir les abus. Si vous payez pour chaque opération que vous exécutez, vous ferez de votre mieux pour implémenter votre code de la manière la plus efficace. Le coût des frais empêche également les mauvais acteurs d'inonder le système d'opérations inutiles (à moins qu'ils ne soient prêt à dépenser beaucoup d'argent pour exécuter du code inutile).
+
+### Cryptographie asymétrique
+
+Le cœur de la cryptographie asymétrique est l'utilisation de paires de clés publiques et privées. Une clé privée est un nombre aléatoire. La clé publique associée est un nombre généré par un algorithme unidirectionnel basé sur la clé privée. Cet algorithme est un algorithme de signature numérique à courbe elliptique (ecdsa). La courbe elliptique utilisée par Bitcoin, Ethereum et de nombreuses autres crypto-monnaies est appelée secp256k1. L'équation de la courbe secp256k1 est y² = x³ + 7. Cette courbe ressemble à:
+
+![Image of Yaktocat](https://raw.githubusercontent.com/AbsoluteVirtueXI/alyra-courses/master/res/ecdsa.gif)
+
+Une clé privée est une grande chaine de caractères, de préférence, généré de manière aléatoire. La clé privée doit être gardée secrète. Une clé publique est un grand nombre obtenu par un ecdsa sur la clé privée. La clé publique peut être partagée avec n'importe qui sans compromettre la sécurité de votre clé publique. Une adresse est obtenue à partir d'une clé publique avec une fonction de hachage. Une transaction contient le message de la transaction, et une signature de ce message générée avec la clé privée de l'expéditeur. N'importe qui peut vérifier la signature générée pour:
+
+- récupérer la clé publique et l'adresse du signataire.
+- vérifiez l'intégrité du message, qu'il s'agit du même message qui a été signé par le gisnataire.
+
+Avec la signature et le hachage des données d'origine, nous pouvons effectuer une récupération de signature de courbe elliptique et obtenir la clé publique puis l'adresse. Si l'adresse récupérée est identique à l'adresse de l'expéditeur, alors le détenteur de la clé privée de la paire de clés publiques a bien signé le message.
